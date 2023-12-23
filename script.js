@@ -2,7 +2,7 @@ console.log("Inicio del programa");
 
 // FUNCIÓN
 
-function pedirNombre() {
+/* function pedirNombre() {
     return prompt("Ingrese su nombre");
 }
 
@@ -31,7 +31,66 @@ if (edad > 17) {
 
 alert(mensaje);
 
+alert("¡Bienvenido, " + nombre + "!😊"); */
+
+function pedirNombre() {
+  let nombre = prompt("Ingrese su nombre:");
+
+  // Validar que solo contiene letras, incluyendo tildes
+  while (!/^[\p{L}]+$/u.test(nombre)) {
+      alert("El nombre ingresado no es válido. Por favor, ingrese solo letras.");
+      nombre = prompt("Ingrese su nombre:");
+  }
+
+  return nombre;
+}
+
+function pedirApellido() {
+  let apellido = prompt("Ingrese su apellido:");
+
+  // Validar que solo contiene letras, incluyendo tildes
+  while (!/^[\p{L}]+$/u.test(apellido)) {
+      alert("El apellido ingresado no es válido. Por favor, ingrese solo letras.");
+      apellido = prompt("Ingrese su apellido:");
+  }
+
+  return apellido;
+}
+
+function pedirEdad() {
+  let edad = prompt("Ingrese su edad:");
+
+  // Validar que es un número válido
+  while (isNaN(edad) || edad === null || edad === "" || edad <= 0) {
+      alert("La edad ingresada no es válida ⛔. Por favor, ingrese una edad válida.");
+      edad = prompt("Ingrese su edad:");
+  }
+
+  return parseInt(edad);
+}
+
+let nombre = pedirNombre();
+let apellido = pedirApellido();
+let edad = pedirEdad();
+
+let mensaje;
+
+while (isNaN(edad) || edad === null || edad === "" || edad <= 17) {
+  alert("La edad ingresada no es válida ⛔. Por favor, ingrese una edad válida.");
+  edad = pedirEdad();
+}
+
+if (edad > 17) {
+  mensaje = "Sos mayor de edad, podrás realizar operaciones en este sitio ✅";
+} 
+
+
+alert(mensaje);
+
 alert("¡Bienvenido, " + nombre + "!😊");
+
+
+
 
 console.log("¡Bienvenido, " + nombre + "!");
 
